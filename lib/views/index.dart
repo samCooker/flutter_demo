@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'index_home.dart';
+import 'package:flutter_app/views/home/index_home.dart';
 import 'index_me.dart';
 import 'index_notice.dart';
 
@@ -67,7 +67,8 @@ class _MyHomePageState extends State<MyHomePage>
           children: <Widget>[
             new HomePage(),
             new NoticePage(),
-            new MePage()
+            new MePage(),
+            new MePage(),
           ]
       ),
       bottomNavigationBar: new Material(
@@ -75,17 +76,6 @@ class _MyHomePageState extends State<MyHomePage>
         child: SafeArea(
             child: Container(
               height: 66,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFF0F0F0),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: const Color(0xFFF0F0FF),
-                      blurRadius: 2.0,
-                      spreadRadius: 1.0,
-                      offset: Offset(-1.0, -1.0),
-                    )
-                  ]
-              ),
               child: TabBar(
                 controller: tabController,
                 indicatorWeight: 0.1,
