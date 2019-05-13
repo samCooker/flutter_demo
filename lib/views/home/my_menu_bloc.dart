@@ -3,28 +3,24 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_app/model/model_menu.dart';
-import 'package:flutter_app/routers/application.dart';
 
 class MyMenuBloc {
 
-  List<MenuData> _myMenuList;
+  Map _myMenuData;
 
-  StreamController<List<MenuData>> _controller;
+  StreamController<Map> _controller;
 
   MyMenuBloc(){
-    _controller = StreamController<List<MenuData>>();
-    print("new MyMenuBloc");
-    Application.menuList = [
-      MenuData('待办待办待办','fordoList'),
-      MenuData('经办经','doList'),
-    ];
+    _controller = StreamController<Map>();
   }
 
-  Stream<List<MenuData>> get items => _controller.stream;
+  Stream<Map> get items => _controller.stream;
 
   saveMenuData(List<MenuData> data){
-    _myMenuList = data;
-    _controller.sink.add(_myMenuList);
+    _myMenuData = new Map();
+    _myMenuData['data'] = data;
+    _myMenuData['isLoading'] = false;
+    _controller.sink.add(_myMenuData);
   }
 
   dispose(){
@@ -38,7 +34,7 @@ class MyMenuProvider extends InheritedWidget{
 
   final MyMenuBloc myMenuBloc;
 
-  MyMenuProvider({Key key, Widget child,MyMenuBloc myMenuBloc}) : myMenuBloc = MyMenuBloc(), super(key: key, child: child);
+  MyMenuProvider({Key key, Widget child,MyMenuBloc myMenuBloc}) : myMenuBloc = myMenuBloc ?? MyMenuBloc(), super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {

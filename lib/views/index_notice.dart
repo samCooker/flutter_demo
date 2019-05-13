@@ -10,22 +10,25 @@ class NoticePage extends StatefulWidget {
   
 }
 
-class NoticePageState extends State<NoticePage> with TickerProviderStateMixin {
+class NoticePageState extends State<NoticePage> with AutomaticKeepAliveClientMixin{
 
   List<Widget> items = [];
   RefreshController _refreshController;
 
-  void _init() {
-    for (int i = 0; i < 14; i++) {
-      items.add(Text("这是一个公告$i"));
-    }
-  }
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     _init();
     _refreshController  = RefreshController();
     super.initState();
+  }
+
+  void _init() {
+    for (int i = 0; i < 14; i++) {
+      items.add(Text("这是一个公告$i"));
+    }
   }
 
   @override
@@ -81,5 +84,5 @@ class NoticePageState extends State<NoticePage> with TickerProviderStateMixin {
     _refreshController.dispose();
     super.dispose();
   }
-  
+
 }
