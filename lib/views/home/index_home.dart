@@ -9,6 +9,7 @@ import '../../routers/application.dart';
 import '../../components/search_input.dart';
 import 'my_menu_bloc.dart';
 import 'package:flutter_app/model/model_menu.dart';
+import '../../utils/themes_bloc.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -42,6 +43,7 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
   @override
   Widget build(BuildContext context) {
+    final themesBloc = ThemeBlocProvider.of(context);
     super.build(context);
     return new Scaffold(
       //标题栏
@@ -56,15 +58,7 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                   "超创信息",
                   style: Theme.of(context).textTheme.headline,
                 ),
-              ),
-            Expanded(
-              child: SearchInput(
-                  placeholder: "搜索功能",
-                  onTap: () {
-                    print("功能搜索");
-                    Application.router.navigateTo(context, "search");
-                  }),
-            )
+              )
             ],
           ),
           centerTitle: false
@@ -104,7 +98,12 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                         alignment: Alignment.centerRight,
                         child: InkWell(
                           onTap: () {
-
+//todo 测试修改主题
+                            themesBloc.setThemeData(new CustomTheme(
+                              primaryColor: Colors.redAccent,
+                              iconColor: Colors.redAccent,
+                              backgroundColor: Colors.amberAccent,
+                            ));
                           },
                           child: Container(
                             padding: EdgeInsets.all(10),

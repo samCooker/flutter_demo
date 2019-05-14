@@ -34,37 +34,34 @@ class CustomThemeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemesBloc themesBloc = ThemeBlocProvider.of(context);
-    return StreamBuilder<ThemeData>(
+    return StreamBuilder<CustomTheme>(
       stream: themesBloc.items,
-      initialData: new ThemeData(
-        primaryColor: Colors.blueAccent,
-        buttonColor: Colors.blueAccent,
-        backgroundColor: Color(0xFFEFEFEF),
-        accentColor: Color(0xFF888888),
-        textTheme: TextTheme(
-            headline: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20.0,fontWeight: FontWeight.bold),
-            //设置Material的默认字体样式
-            body1: TextStyle(color: Color(0xDD4E4E4E), fontSize: 18.0),
-            //加粗的字体，（首页菜单标题样式）
-            display1: TextStyle(color: Color(0xDD4E4E4E),fontSize: 16,fontWeight: FontWeight.bold),
-            //(首页菜单项样式)
-            display2: TextStyle(color: Color(0xDD4E4E4E),fontSize: 14,fontWeight: FontWeight.bold),
-            button: TextStyle(color: Colors.blueAccent,fontSize: 14.0,)
-        ),
-        iconTheme: IconThemeData(
-          color: Color(ThemeColor),
-          size: 35.0,
-        ),
-      ),
+      initialData: new CustomTheme(),
       builder: (context,snapshot){
         return MaterialApp(
           theme: new ThemeData(
             primaryColor: snapshot.data.primaryColor,
-            buttonColor: snapshot.data.buttonColor,
+            buttonColor: snapshot.data.primaryColor,
+            accentColor: snapshot.data.primaryColor,
             backgroundColor: snapshot.data.backgroundColor,
-            accentColor: snapshot.data.accentColor,
-            textTheme: snapshot.data.textTheme,
-            iconTheme: snapshot.data.iconTheme,
+            dividerColor:Color(0xFFF4F4F4),
+            cursorColor: Color(0xFFC9C9C9),
+            textTheme: TextTheme(
+                title: TextStyle(color: Color(0xDD4E4E4E), fontSize: 18.0),
+                subtitle: TextStyle(color: Color(0xDD4E4E4E), fontSize: 16.0),
+                headline: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20.0,fontWeight: FontWeight.bold),
+                //设置Material的默认字体样式
+                body1: TextStyle(color: Color(0xDD4E4E4E), fontSize: 18.0),
+                //加粗的字体，（首页菜单标题样式）
+                display1: TextStyle(color: Color(0xDD4E4E4E),fontSize: 16,fontWeight: FontWeight.bold),
+                //(首页菜单项样式)
+                display2: TextStyle(color: Color(0xDD4E4E4E),fontSize: 14,fontWeight: FontWeight.bold),
+                button: TextStyle(color: snapshot.data.primaryColor,fontSize: 14.0,)
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.blueAccent,
+              size: 35.0,
+            ),
           ),
           home: MyHomePage(),
           onGenerateRoute: Application.router.generator,

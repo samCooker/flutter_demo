@@ -36,7 +36,7 @@ class NoticePageState extends State<NoticePage> with AutomaticKeepAliveClientMix
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("通知公告"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: SmartRefresher(
           controller: _refreshController,

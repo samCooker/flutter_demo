@@ -22,7 +22,7 @@ class ContactsPageState extends State<ContactsPage> with AutomaticKeepAliveClien
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("通讯录"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Text("通讯录"),
     );
