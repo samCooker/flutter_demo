@@ -13,8 +13,8 @@ class MenuData {
   int get iconHex{
     if(icon!=null&&icon.trim()!=''){
       // todo test
-      return 0xe679;
+      return 0xe61f;
     }
-    return 0xe679;
+    return 0xe61f;
   }
 }

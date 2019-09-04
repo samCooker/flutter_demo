@@ -7,8 +7,11 @@ class AppRoutes {
 
   static void configureRoutes(Router router){
     //首页
-    router.define("/index", handler: homeHandler);
+    router.define("/", handler: homeHandler);
     router.define("/search", handler: searchHandler);
+
+    //菜单编辑
+    router.define("/edit-menu", handler: editMenuHandler);
   }
 
 }

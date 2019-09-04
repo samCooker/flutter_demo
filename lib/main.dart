@@ -43,12 +43,13 @@ class CustomThemeApp extends StatelessWidget {
             primaryColor: snapshot.data.primaryColor,
             buttonColor: snapshot.data.primaryColor,
             accentColor: snapshot.data.primaryColor,
-            backgroundColor: snapshot.data.backgroundColor,
-            dividerColor:Color(0xFFF4F4F4),
+            backgroundColor: Color(0xFFFFFFFF),
+            dividerColor:Color(0xFFF0F0F0),
             cursorColor: Color(0xFFC9C9C9),
             textTheme: TextTheme(
                 title: TextStyle(color: Color(0xDD4E4E4E), fontSize: 18.0),
                 subtitle: TextStyle(color: Color(0xDD4E4E4E), fontSize: 16.0),
+                //首页头部标题
                 headline: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20.0,fontWeight: FontWeight.bold),
                 //设置Material的默认字体样式
                 body1: TextStyle(color: Color(0xDD4E4E4E), fontSize: 18.0),
